@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #header{
+            color: blue;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="header">Hello, World!</h1>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <button id="btn">Click</button>
+
+    <ul id="itemList">
+        <li>İtem 1</li>
+        <li>İtem 2</li>
+        <li>İtem 3</li>
+    </ul>
+    <button id="button">Click</button>
+
+    <script>
+        let header = document.getElementById("header")
+        let button = document.getElementById("btn")
+        let paragraph = document.querySelector("p")
+
+        console.log(header.textContent)
+        console.log(paragraph.textContent)
+
+        header.textContent = "New Header Text"
+        paragraph.innerHTML = "<strong>This is a bold paragraph</strong>"
+
+        header.style.color = "red"
+        header.style.fontSize = "24px"
+        paragraph.style.backgroundColor = "yellow"
+
+        let newParagraph = document.createElement("p")
+        newParagraph.id = "newParagraph"
+        newParagraph.textContent = "This is a new paragraph"
+        document.body.appendChild(newParagraph)
+
+        document.body.removeChild(button)
+
+        let ul = document.createElement("ul")
+        for(let i = 1; i<=5;i++){
+            let li = document.createElement("li")
+            li.textContent = `Item ${i}`;
+            ul.appendChild(li)
+        }
+        document.body.appendChild(ul)
+        
+
+        const itemList = document.getElementById("itemList")
+
+        itemList.addEventListener("click", function(event){
+            if(event.target.tagName === "LI"){
+                alert(event.target.textContent)
+            }
+        })
+
+        document.getElementById("button").addEventListener("click",function(){
+            let newItem = document.createElement("li")
+            newItem.textContent = `Item ${itemList.children.length + 1}`;
+            itemList.appendChild(newItem)
+        })
+    </script>
+</body>
+</html>
